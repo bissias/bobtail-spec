@@ -1,4 +1,4 @@
-# Working Specification for Bobtail on Swarm
+# Working Specification for Bobtail
 
 ## Background on Storm
 
@@ -41,7 +41,7 @@ By construction, Bobtail punishes miners who produce proofs that include doubles
 
 The Storm protocol provides some pre-consensus, but lacks concrete doublespend protection. Meanwhile, the Bobtail protocol reduces variance in inter-block time, and as a result, reduces the blockchain's susceptibility to doublespend and selfish mining attacks. However, as specified, it does not provide a pre-consensus mechanism. Worse, by only including the transactions specified by the 1OS, Bobtail destroys zero-confirmation acceptance for transactions that arrive after the 1OS (half of the transactions in the block on average). Therefore, we seek a combination of the two technologies that preserves the benefits of each without suffering from their drawbacks. We propose the following approach to combining the two protocols.
 
-1. Miners assemble a sub-block header and grind on its nonce in the same manner as in Storm; we call the resulting hash values *proofs* as in Bobtail. The contents of the sub-block are identical to a Storm delta block with the following exceptions. 
+1. Miners assemble a sub-block header and grind on its nonce in the same manner as in Storm; we call the resulting hash values *proofs* as in Bobtail. The contents of the sub-block are identical to a Storm delta block with the following exceptions.
    - The coinbase is now called a *proofbase* and has the following properties.
      - The output is null, i.e. no coin is allocated to the miner at this stage.
      - The first input, `vin[0]`, is also null.
