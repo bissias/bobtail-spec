@@ -21,7 +21,7 @@
    - Creates a coinbase transaction that divides rewards evenly among all k proofs
    - Signs the block and propagates it to other miners.
 10. In the event of a block race, the winning block is the one with the highest score which is calculated as:
-    - The score of a proof that has no descendents is 0.
+    - The score of a proof that has no descendents is 1.
     - For a proof with descendents, each descendent of generation `i` has score `i`, e.g. children score 1 point and grandchildren score 2 points.
     - The score for a block is the cumulative score of all `k` proofs in the block.
 
